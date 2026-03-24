@@ -1,17 +1,92 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supratim Narzary | Portfolio</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #e0e0e0; background-color: #0d1117; margin: 0; padding: 0; }
+        .container { max-width: 900px; margin: auto; padding: 40px 20px; }
+        header { border-bottom: 1px solid #30363d; padding-bottom: 30px; margin-bottom: 40px; text-align: left; }
+        h1 { color: #58a6ff; margin: 0; font-size: 2.5em; }
+        h2 { color: #79c0ff; border-bottom: 1px solid #30363d; padding-bottom: 10px; margin-top: 40px; }
+        h3 { color: #f0f6fc; margin-bottom: 5px; }
+        .sub-text { color: #8b949e; font-size: 0.95em; margin-top: 5px; }
+        .job-meta { display: flex; justify-content: space-between; color: #8b949e; font-style: italic; margin-bottom: 10px; }
+        .skills-tag { display: inline-block; background: #238636; color: white; padding: 4px 12px; border-radius: 15px; font-size: 0.85em; margin: 5px 5px 0 0; }
+        a { color: #58a6ff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+    </style>
 </head>
 <body>
-    <h1>Welcome to My Portfolio</h1>
-    <p>Data Engineering Student | Python & SQL Enthusiast</p>
-    
-    <h2>Projects</h2>
-    <ul>
-        <li><strong>Levi's Growth Strategy:</strong> Strategy for $50M budget.</li>
-        <li><strong>BNRY LLC:</strong> Shopify e-commerce store experience.</li>
-        <li><strong>ArtSci Lab:</strong> Revamping podcast platforms and SOPs.</li>
-    </ul>
-</body>
-</html>
+
+<div class="container">
+    <header>
+        <h1>Supratim Narzary</h1>
+        <p>MS in Business Analytics & AI | UT Dallas</p>
+        <p>
+            Richardson, TX | <a href="mailto:supratimnarzary@gmail.com">supratimnarzary@gmail.com</a> | 
+            <a href="#">LinkedIn</a> | <a href="#">GitHub</a>
+        </p>
+    </header>
+
+    <h2>Technical Stack</h2>
+    <div>
+        <span class="skills-tag">Python (Pandas, NumPy, Scikit-Learn)</span>
+        <span class="skills-tag">SQL</span>
+        <span class="skills-tag">R Studio</span>
+        <span class="skills-tag">Tableau</span>
+        <span class="skills-tag">PowerBI</span>
+        <span class="skills-tag">Alteryx</span>
+        <span class="skills-tag">H2O-3</span>
+        <span class="skills-tag">SnowPro Associate</span>
+    </div>
+
+    <h2>Professional Experience</h2>
+
+    <div>
+        <h3>Teaching Assistant, Applied Machine Learning</h3>
+        <div class="job-meta">
+            <span>University of Texas at Dallas</span>
+            <span>Aug 2025 – Present</span>
+        </div>
+        <ul>
+            <li>Assisting in grading coursework for ML labs and projects.</li>
+            <li>Translating analytical concepts into insights using Tableau storytelling.</li>
+        </ul>
+    </div>
+
+    <div>
+        <h3>Process Champion, Health & Benefits</h3>
+        <div class="job-meta">
+            <span>Mercer LLC India</span>
+            <span>Aug 2019 – Dec 2020</span>
+        </div>
+        <ul>
+            <li>Validated healthcare datasets (>10,000 rows) using Advanced Excel, ensuring 95% data integrity.</li>
+            <li>Conducted root-cause analysis to resolve reporting inaccuracies.</li>
+        </ul>
+    </div>
+
+    <div>
+        <h3>Senior Analyst, Health & Benefits</h3>
+        <div class="job-meta">
+            <span>Aon India</span>
+            <span>Jan 2016 – Jul 2019</span>
+        </div>
+        <ul>
+            <li>Managed 120+ monthly reports with 97% accuracy under GDPR/PHI standards.</li>
+            <li>Automated KPI tracking, increasing operational efficiency by 30%.</li>
+        </ul>
+    </div>
+
+    <h2>Key Projects</h2>
+
+    <div>
+        <h3>SBA Loan Default Classification</h3>
+        <p class="sub-text">Python, Scikit-learn, H2O-3, Pandas</p>
+        <ul>
+            <li>Built a classification model using WOE encoding and feature engineering.</li>
+            <li>Engineered an automated scoring pipeline for production-ready batch predictions.</li>
