@@ -5,19 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Supratim Narzary | Portfolio</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #000000; background-color: #FAF9F6; margin: 0; padding: 0; }
+        /* Light professional background and dark primary text */
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; line-height: 1.6; color: #333333; background-color: #FAF9F6; margin: 0; padding: 0; }
         .container { max-width: 900px; margin: auto; padding: 40px 20px; }
-        header { border-bottom: 1px solid #30363d; padding-bottom: 30px; margin-bottom: 40px; text-align: left; }
-        h1 { color: #58a6ff; margin: 0; font-size: 2.5em; }
-        h2 { color: #79c0ff; border-bottom: 1px solid #30363d; padding-bottom: 10px; margin-top: 40px; }
-        h3 { color: #f0f6fc; margin-bottom: 5px; }
-        .sub-text { color: #8b949e; font-size: 0.95em; margin-top: 5px; }
-        .job-meta { display: flex; justify-content: space-between; color: #8b949e; font-style: italic; margin-bottom: 10px; }
-        .skills-tag { display: inline-block; background: #238636; color: white; padding: 4px 12px; border-radius: 15px; font-size: 0.85em; margin: 5px 5px 0 0; }
-        a { color: #58a6ff; text-decoration: none; }
+        
+        /* Consistent Border and Heading Colors */
+        header { border-bottom: 2px solid #e1e4e8; padding-bottom: 30px; margin-bottom: 40px; text-align: left; }
+        h1 { color: #0366d6; margin: 0; font-size: 2.5em; }
+        h2 { color: #0366d6; border-bottom: 1px solid #e1e4e8; padding-bottom: 10px; margin-top: 40px; }
+        h3 { color: #24292e; margin-bottom: 5px; }
+        
+        /* Secondary Text and Metadata */
+        .sub-text { color: #586069; font-size: 0.95em; margin-top: 5px; }
+        .job-meta { display: flex; justify-content: space-between; color: #586069; font-style: italic; margin-bottom: 10px; }
+        .company { color: #0366d6; font-weight: bold; }
+        
+        /* Skill Tags - Professional Green */
+        .skills-tag { display: inline-block; background: #28a745; color: white; padding: 4px 12px; border-radius: 15px; font-size: 0.85em; margin: 5px 5px 0 0; }
+        
+        /* Links */
+        a { color: #0366d6; text-decoration: none; font-weight: 500; }
         a:hover { text-decoration: underline; }
+        
+        /* Lists */
         ul { padding-left: 20px; }
         li { margin-bottom: 10px; }
+
+        /* Entrepreneurial Spotlight Box */
+        .spotlight-box { display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start; background: #ffffff; padding: 25px; border: 1px solid #e1e4e8; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
     </style>
 </head>
 <body>
@@ -34,14 +49,10 @@
 
     <h2>Technical Stack</h2>
     <div>
-        <span class="skills-tag">Python (Pandas, NumPy, Scikit-Learn)</span>
-        <span class="skills-tag">SQL</span>
-        <span class="skills-tag">R Studio</span>
-        <span class="skills-tag">Tableau</span>
-        <span class="skills-tag">PowerBI</span>
-        <span class="skills-tag">Alteryx</span>
-        <span class="skills-tag">H2O-3</span>
-        <span class="skills-tag">SnowPro Associate</span>
+        <span class="skills-tag">SQL</span> <span class="skills-tag">Python</span> <span class="skills-tag">R Studio</span> 
+        <span class="skills-tag">Alteryx</span> <span class="skills-tag">Pandas</span> <span class="skills-tag">NumPy</span> 
+        <span class="skills-tag">Scikit-Learn</span> <span class="skills-tag">Tableau</span>
+        <span class="skills-tag">PowerBI</span> <span class="skills-tag">H2O-3</span> <span class="skills-tag">SnowPro Associate</span>
     </div>
 
     <h2>Professional Experience</h2>
@@ -53,8 +64,8 @@
             <span>Aug 2025 – Present</span>
         </div>
         <ul>
-            <li>Assisting in grading coursework for ML labs and projects.</li>
-            <li>Translating analytical concepts into insights using Tableau storytelling.</li>
+            <li>Assisting professor in grading coursework for Applied Machine Learning labs and projects.</li>
+            <li>Translating analytical concepts into insights with Tableau storytelling.</li>
         </ul>
     </div>
 
@@ -64,49 +75,3 @@
             <span>Mercer LLC India</span>
             <span>Aug 2019 – Dec 2020</span>
         </div>
-        <ul>
-            <li>Validated healthcare datasets (>10,000 rows) using Advanced Excel, ensuring 95% data integrity.</li>
-            <li>Conducted root-cause analysis to resolve reporting inaccuracies.</li>
-        </ul>
-    </div>
-
-    <div>
-        <h3>Senior Analyst, Health & Benefits</h3>
-        <div class="job-meta">
-            <span>Aon India</span>
-            <span>Jan 2016 – Jul 2019</span>
-        </div>
-        <ul>
-            <li>Managed 120+ monthly reports with 97% accuracy under GDPR/PHI standards.</li>
-            <li>Automated KPI tracking, increasing operational efficiency by 30%.</li>
-        </ul>
-    </div>
-
-    <h2>Key Projects</h2>
-
-    <div>
-        <h3>SBA Loan Default Classification</h3>
-        <p class="sub-text">Python, Scikit-learn, H2O-3, Pandas</p>
-        <ul>
-            <li>Built a classification model using WOE encoding and feature engineering.</li>
-            <li>Engineered an automated scoring pipeline for production-ready batch predictions.</li>
-
-<h2 style="margin-top: 50px; color: #79c0ff;">Entrepreneurial Spotlight: NEI AGRO ORIGIN</h2>
-<div class="skills" style="display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start; background: #FAF9F6; padding: 25px; border: 1px solid #30363d;">
-    
-    <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 15px;">
-        <img src="images/businessphoto2.png" alt="NEI AGRO Product" style="width: 100%; border-radius: 8px; border: 1px solid #30363d;">
-        <img src="images/businessphoto3.png" alt="NEI AGRO Product" style="width: 100%; border-radius: 8px; border: 1px solid #30363d;">
-    </div>
-
-    <div style="flex: 2; min-width: 300px;">
-        <h3 style="margin-top: 0;">Co-Founder & Marketing Manager</h3>
-        <p class="company" style="color: #79c0ff; font-weight: bold;">NEI AGRO ORIGIN F&B PVT. LTD | Mar 2021 - Dec 2023</p>
-        <ul>
-            <li><strong>Data-Driven Strategy:</strong> Conducted comprehensive market performance reviews and financial analysis to monitor revenue accuracy and guide strategic decision-making.</li>
-            <li><strong>Power BI Integration:</strong> Designed and maintained interactive dashboards providing real-time insights into marketing ROI.</li>
-            <li><strong>Cost Optimization:</strong> Influenced strategic budget reallocation that <strong>reduced operational costs by approximately 50%</strong>.</li>
-            <li><strong>Leadership:</strong> Managed end-to-end marketing operations and financial health for a startup in the F&B sector.</li>
-        </ul>
-    </div>
-</div>
