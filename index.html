@@ -42,7 +42,10 @@
     <div>
         <span class="skills-tag">SQL</span> <span class="skills-tag">Python</span> <span class="skills-tag">Tableau</span>
         <span class="skills-tag">PowerBI</span> <span class="skills-tag">Pandas</span> <span class="skills-tag">Scikit-Learn</span> <span class="skills-tag">Alteryx</span>
-	<span class="skills-tag">A/B Testing</span> <span class="skills-tag">SnowPro Associate</span> <span class="skills-tag">Advanced MS Excel</span>
+        <span class="skills-tag">A/B Testing</span> <span class="skills-tag">SnowPro Associate</span> <span class="skills-tag">Advanced MS Excel</span>
+        <span class="skills-tag">Snowflake</span> <span class="skills-tag">dbt Core</span> <span class="skills-tag">GitHub Actions</span> <span class="skills-tag">Looker Studio</span>
+        <span class="skills-tag">HuggingFace</span> <span class="skills-tag">PyTorch</span> <span class="skills-tag">LoRA / PEFT</span> <span class="skills-tag">vLLM</span>
+        <span class="skills-tag">OpenAI API</span> <span class="skills-tag">WandB</span> <span class="skills-tag">LLMs</span>
     </div>
 
     <h2>Professional Experience</h2>
@@ -104,6 +107,26 @@
         <ul>
             <li>Built SQL-powered analytical dashboards to track churn, retention, and customer acquisition across key customer segments.</li>
             <li>Developed data models using CTEs, joins, and subqueries to generate high-quality KPIs and support Go-to-Market decision-making.</li>
+        </ul>
+    </div>
+
+    <div>
+        <h3>SaaS Analytics Engineering — E-Commerce Pipeline <span style="font-weight:normal; font-size:0.85em; color:#586069;">| Snowflake, dbt Core, Looker Studio, GitHub Actions, SQL, Python </span></h3>
+        <ul>
+            <li>Built a production-grade analytics engineering pipeline modelling 99,441 e-commerce orders (500K+ raw rows) from the Olist Brazilian marketplace, implementing a full Kimball star schema across staging, intermediate, and data mart layers using dbt Core on Snowflake.</li>
+            <li>Authored 32 automated dbt data quality tests (unique, not_null, accepted_values, custom SQL) achieving PASS=32, WARN=0, ERROR=0; surfaced and resolved real-world data issues including zero-value voucher orders and NULL payment records.</li>
+            <li>Built a CI/CD pipeline via GitHub Actions to automatically run dbt build and test on every push, with Snowflake credentials managed as encrypted GitHub Secrets - never exposed in code.</li>
+            <li>Delivered a 4-page Looker Studio executive dashboard and CFO-addressed analytics brief uncovering a <strong>97% one-time buyer rate</strong> across 96K customers, a <strong>$775K revenue opportunity</strong> from a 5% retention improvement, and a geographic concentration risk with 3 states driving 62.5% of $16M total revenue.</li>
+        </ul>
+        <p style="margin-top: 6px;"><a href="https://github.com/supratimnarzary/saas-analytics-portfolio" target="_blank">View on GitHub →</a></p>
+    </div>
+
+    <div>
+        <h3>Multi-Label Tweet Emotion Classification <span style="font-weight:normal; font-size:0.85em; color:#586069;">| Python, HuggingFace, Gemma-2, LoRA, OpenAI API, vLLM, WandB | 2025</span></h3>
+        <ul>
+            <li>Designed and compared four modeling approaches for 11-class multi-label emotion detection on tweets: encoder-based classification head, fine-tuned generative LLM (Gemma-2-2B), instruction-tuned LLM with LoRA adapters, and zero-shot GPT-4.1; demonstrating end-to-end understanding of traditional ML, fine-tuned LLMs, and agentic prompt-based inference.</li>
+            <li>Fine-tuned Google's Gemma-2-2B using PEFT/LoRA with parameter-efficient training on Google Colab; deployed fine-tuned adapters to HuggingFace Hub and ran constrained JSON-output inference using vLLM for production-ready structured predictions.</li>
+            <li>Engineered few-shot prompts with constrained JSON decoding for GPT-4.1 API inference; tracked all experiments across model variants using Weights &amp; Biases (WandB) for reproducibility and performance comparison.</li>
         </ul>
     </div>
     <h2>Entrepreneurial Spotlight: NEI AGRO ORIGIN</h2>
