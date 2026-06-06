@@ -1,181 +1,538 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supratim Narzary | Portfolio</title>
-    <style>
-        /* Uniform Font and Light Background */
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333333; background-color: #FAF9F6; margin: 0; padding: 0; }
-        .container { max-width: 900px; margin: auto; padding: 40px 20px; }
-        
-        /* Professional Uniform Blue for all Headings */
-        h1, h2, h3 { color: #0366d6; }
-        header { border-bottom: 2px solid #e1e4e8; padding-bottom: 30px; margin-bottom: 40px; }
-        h1 { margin: 0; font-size: 2.5em; }
-        h2 { border-bottom: 1px solid #e1e4e8; padding-bottom: 10px; margin-top: 40px; }
-        
-        /* Metadata and Links */
-        .job-meta { display: flex; justify-content: space-between; color: #586069; font-style: italic; margin-bottom: 10px; }
-        .skills-tag { display: inline-block; background: #28a745; color: white; padding: 4px 12px; border-radius: 15px; font-size: 0.85em; margin: 5px 5px 0 0; }
-        a { color: #0366d6; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 10px; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Supratim Narzary — Business Analytics & AI</title>
+<meta name="description" content="Supratim Narzary — MS in Business Analytics and AI, The University of Texas at Dallas. Data, analytics engineering, and applied machine learning." />
 
-        /* Spotlight Box Styling */
-        .spotlight-box { display: flex; gap: 30px; flex-wrap: wrap; align-items: flex-start; background: #ffffff; padding: 25px; border: 1px solid #e1e4e8; border-radius: 8px; }
-    </style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..600&family=Hanken+Grotesk:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#F1ECE1;
+    --bg-2:#E9E3D5;
+    --ink:#17150F;
+    --ink-soft:#403B31;
+    --muted:#8C8576;
+    --accent:#D9451F;
+    --accent-soft:#E8703F;
+    --line:rgba(23,21,15,.13);
+    --line-strong:rgba(23,21,15,.28);
+    --card:#F6F2E9;
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Hanken Grotesk",system-ui,sans-serif;
+    --mono:"JetBrains Mono",monospace;
+    --ease:cubic-bezier(.16,1,.3,1);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    cursor:none;
+  }
+  @media (max-width:820px){ body{cursor:auto} }
+
+  ::selection{background:var(--accent);color:var(--bg)}
+
+  /* ---------- Fluid interactive background ---------- */
+  .field{position:fixed;inset:0;z-index:-2;overflow:hidden;background:
+    radial-gradient(120% 120% at 80% -10%, var(--bg-2), var(--bg) 55%);}
+  .blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;
+    will-change:transform;transition:transform .8s var(--ease)}
+  .blob.a{width:46vw;height:46vw;background:radial-gradient(circle,var(--accent-soft),transparent 68%);top:-12vw;left:-6vw;opacity:.32}
+  .blob.b{width:40vw;height:40vw;background:radial-gradient(circle,#9fb89f,transparent 70%);bottom:-14vw;right:-8vw;opacity:.28}
+  .grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+  /* ---------- Custom cursor ---------- */
+  .cursor{position:fixed;top:0;left:0;width:9px;height:9px;border-radius:50%;
+    background:var(--accent);z-index:9999;pointer-events:none;transform:translate(-50%,-50%);
+    transition:width .25s var(--ease),height .25s var(--ease),background .25s}
+  .cursor-ring{position:fixed;top:0;left:0;width:38px;height:38px;border:1px solid var(--line-strong);
+    border-radius:50%;z-index:9998;pointer-events:none;transform:translate(-50%,-50%);
+    transition:width .3s var(--ease),height .3s var(--ease),border-color .3s,opacity .3s}
+  .cursor.hover{width:0;height:0}
+  .cursor-ring.hover{width:64px;height:64px;border-color:var(--accent);background:rgba(217,69,31,.06)}
+  @media (max-width:820px){ .cursor,.cursor-ring{display:none} }
+
+  /* ---------- Scroll progress ---------- */
+  .progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--accent);z-index:200}
+
+  /* ---------- Nav ---------- */
+  nav{position:fixed;top:0;left:0;width:100%;z-index:150;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px clamp(20px,5vw,64px);mix-blend-mode:multiply}
+  .brand{font-family:var(--mono);font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+  .brand b{font-weight:500}
+  .navlinks{display:flex;gap:28px}
+  .navlinks a{font-family:var(--mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;
+    color:var(--ink-soft);text-decoration:none;position:relative;padding:4px 0;transition:color .3s}
+  .navlinks a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--accent);transition:width .35s var(--ease)}
+  .navlinks a:hover,.navlinks a.active{color:var(--ink)}
+  .navlinks a.active::after,.navlinks a:hover::after{width:100%}
+  @media (max-width:820px){ .navlinks{display:none} }
+
+  /* ---------- Layout ---------- */
+  .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,64px)}
+  section{position:relative}
+
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent);display:flex;align-items:center;gap:12px;margin-bottom:28px}
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--accent)}
+
+  /* ---------- Hero ---------- */
+  header.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+    padding:120px clamp(20px,5vw,64px) 80px;max-width:1180px;margin:0 auto}
+  .hero .tag{font-family:var(--mono);font-size:13px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-soft);margin-bottom:30px}
+  .hero h1{font-family:var(--serif);font-weight:340;font-size:clamp(3.4rem,12vw,10rem);
+    line-height:.92;letter-spacing:-.02em;font-optical-sizing:auto}
+  .hero h1 em{font-style:italic;color:var(--accent);font-weight:340}
+  .hero .sub{margin-top:38px;max-width:620px;font-size:clamp(1.05rem,2vw,1.4rem);
+    color:var(--ink-soft);font-weight:300;line-height:1.5}
+  .hero .meta{margin-top:46px;display:flex;flex-wrap:wrap;gap:14px 30px;
+    font-family:var(--mono);font-size:13px;letter-spacing:.02em}
+  .hero .meta a,.hero .meta span{color:var(--ink-soft);text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:color .3s}
+  .hero .meta a:hover{color:var(--accent)}
+  .hero .meta .dot{width:5px;height:5px;border-radius:50%;background:var(--accent)}
+  .scrollcue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
+    font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);
+    display:flex;flex-direction:column;align-items:center;gap:10px}
+  .scrollcue .ln{width:1px;height:40px;background:var(--line-strong);position:relative;overflow:hidden}
+  .scrollcue .ln::after{content:"";position:absolute;top:-40px;left:0;width:1px;height:40px;background:var(--accent);animation:drop 2s var(--ease) infinite}
+  @keyframes drop{0%{top:-40px}60%,100%{top:40px}}
+
+  /* ---------- Reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}
+  .reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+
+  /* ---------- Generic section spacing ---------- */
+  .sec{padding:clamp(80px,12vh,150px) 0;border-top:1px solid var(--line)}
+  .sec-head{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:60px}
+  .sec-head h2{font-family:var(--serif);font-weight:360;font-size:clamp(2rem,5vw,3.6rem);
+    line-height:1;letter-spacing:-.015em}
+
+  /* ---------- Intro / about ---------- */
+  .about p{font-family:var(--serif);font-weight:330;font-size:clamp(1.5rem,3.6vw,2.7rem);
+    line-height:1.32;letter-spacing:-.01em;max-width:18ch+40ch}
+  .about p .hl{color:var(--accent);font-style:italic}
+
+  /* ---------- Stack ---------- */
+  .stackgrid{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{font-family:var(--mono);font-size:13px;padding:9px 16px;border:1px solid var(--line);
+    border-radius:40px;color:var(--ink-soft);background:var(--card);
+    transition:all .35s var(--ease);cursor:none}
+  .chip:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-3px)}
+  @media (max-width:820px){ .chip{cursor:default} }
+
+  /* ---------- Experience timeline ---------- */
+  .xp{display:grid;grid-template-columns:200px 1fr;gap:0;border-top:1px solid var(--line)}
+  .xp:last-child{border-bottom:1px solid var(--line)}
+  .xp .when{padding:30px 0;font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:.02em}
+  .xp .body{padding:30px 0 30px 36px;border-left:1px solid var(--line);position:relative;transition:padding-left .4s var(--ease)}
+  .xp .body::before{content:"";position:absolute;left:-5px;top:38px;width:9px;height:9px;border-radius:50%;
+    background:var(--bg);border:1px solid var(--line-strong);transition:all .4s var(--ease)}
+  .xp:hover .body{padding-left:46px}
+  .xp:hover .body::before{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 5px rgba(217,69,31,.12)}
+  .xp h3{font-family:var(--serif);font-weight:420;font-size:1.5rem;line-height:1.15;margin-bottom:4px}
+  .xp .org{font-family:var(--mono);font-size:13px;color:var(--accent);margin-bottom:16px}
+  .xp ul{list-style:none;display:grid;gap:9px}
+  .xp li{padding-left:20px;position:relative;color:var(--ink-soft);font-size:.97rem;font-weight:300}
+  .xp li::before{content:"—";position:absolute;left:0;color:var(--muted)}
+  .xp li b{font-weight:500;color:var(--ink)}
+  @media (max-width:760px){
+    .xp{grid-template-columns:1fr}
+    .xp .when{padding:26px 0 0}
+    .xp .body{padding:14px 0 30px 0;border-left:none}
+    .xp .body::before{display:none}
+    .xp:hover .body{padding-left:0}
+  }
+
+  /* ---------- Projects ---------- */
+  .projects{display:grid;gap:0;border-top:1px solid var(--line)}
+  .proj{display:grid;grid-template-columns:48px 1fr auto;gap:28px;align-items:start;
+    padding:40px 0;border-bottom:1px solid var(--line);position:relative;
+    text-decoration:none;color:inherit;transition:transform .4s var(--ease)}
+  .proj .num{font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:8px}
+  .proj h3{font-family:var(--serif);font-weight:380;font-size:clamp(1.5rem,3.4vw,2.4rem);
+    line-height:1.08;letter-spacing:-.01em;transition:color .35s,transform .4s var(--ease)}
+  .proj p{margin-top:14px;color:var(--ink-soft);font-weight:300;max-width:62ch;font-size:1rem}
+  .proj .tools{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+  .proj .tools span{font-family:var(--mono);font-size:11px;color:var(--muted);
+    border:1px solid var(--line);padding:4px 10px;border-radius:30px}
+  .proj .arrow{font-family:var(--serif);font-size:1.8rem;color:var(--muted);padding-top:6px;
+    transition:transform .4s var(--ease),color .35s}
+  .proj:hover{transform:translateX(8px)}
+  .proj:hover h3{color:var(--accent)}
+  .proj:hover .arrow{color:var(--accent);transform:translate(6px,-6px)}
+  @media (max-width:760px){
+    .proj{grid-template-columns:1fr;gap:6px}
+    .proj .num{padding-top:0}.proj .arrow{display:none}
+    .proj:hover{transform:none}
+  }
+
+  /* ---------- Flagship metrics ---------- */
+  .flagship{margin-top:72px;background:var(--ink);color:var(--bg);border-radius:18px;
+    padding:clamp(36px,5vw,64px);position:relative;overflow:hidden}
+  .flagship::after{content:"";position:absolute;top:-30%;right:-10%;width:46%;height:160%;
+    background:radial-gradient(circle,rgba(217,69,31,.4),transparent 65%);filter:blur(40px)}
+  .flagship .eyebrow{color:var(--accent-soft)}
+  .flagship .eyebrow::before{background:var(--accent-soft)}
+  .flagship h3{font-family:var(--serif);font-weight:340;font-size:clamp(1.7rem,3.4vw,2.6rem);
+    line-height:1.1;max-width:20ch;position:relative}
+  .stats{margin-top:48px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;position:relative}
+  .stat .n{font-family:var(--serif);font-weight:340;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1;color:#fff}
+  .stat .n .u{color:var(--accent-soft)}
+  .stat .l{margin-top:10px;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;
+    color:rgba(241,236,225,.6);line-height:1.4}
+  .flagship .ghlink{margin-top:46px;display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--mono);font-size:13px;letter-spacing:.04em;color:var(--bg);text-decoration:none;
+    border:1px solid rgba(241,236,225,.3);padding:12px 22px;border-radius:40px;transition:all .35s var(--ease);position:relative}
+  .flagship .ghlink:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
+  @media (max-width:760px){ .stats{grid-template-columns:repeat(2,1fr);gap:28px 20px} }
+
+  /* ---------- Venture spotlight ---------- */
+  .venture{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5vw,70px);align-items:center}
+  .venture .imgs{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .venture .imgs img{width:100%;height:100%;object-fit:cover;border-radius:12px;aspect-ratio:3/4;
+    filter:grayscale(.2) contrast(1.02);transition:transform .6s var(--ease),filter .6s}
+  .venture .imgs img:hover{transform:scale(1.03);filter:none}
+  .venture h3{font-family:var(--serif);font-weight:360;font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.05;margin-bottom:6px}
+  .venture .role{font-family:var(--mono);font-size:13px;color:var(--accent);margin-bottom:24px}
+  .venture ul{list-style:none;display:grid;gap:11px}
+  .venture li{padding-left:22px;position:relative;color:var(--ink-soft);font-weight:300}
+  .venture li::before{content:"›";position:absolute;left:0;color:var(--accent);font-family:var(--serif);font-size:1.1rem}
+  .venture li b{font-weight:500;color:var(--ink)}
+  .venture .award{margin-top:22px;font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.6}
+  @media (max-width:820px){ .venture{grid-template-columns:1fr} .venture .imgs{max-width:420px} }
+
+  /* ---------- Volunteer ---------- */
+  .vol{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  .vol .card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:32px;transition:transform .4s var(--ease),border-color .4s}
+  .vol .card:hover{transform:translateY(-5px);border-color:var(--line-strong)}
+  .vol h3{font-family:var(--serif);font-weight:400;font-size:1.4rem;margin-bottom:4px}
+  .vol .role{font-family:var(--mono);font-size:12px;color:var(--accent);margin-bottom:18px}
+  .vol ul{list-style:none;display:grid;gap:8px}
+  .vol li{color:var(--ink-soft);font-weight:300;font-size:.95rem;padding-left:18px;position:relative}
+  .vol li::before{content:"—";position:absolute;left:0;color:var(--muted)}
+  @media (max-width:760px){ .vol{grid-template-columns:1fr} }
+
+  /* ---------- Footer / contact ---------- */
+  footer{padding:clamp(80px,14vh,170px) 0 60px;border-top:1px solid var(--line);text-align:center;position:relative}
+  footer .eyebrow{justify-content:center}
+  footer .eyebrow::before{display:none}
+  footer h2{font-family:var(--serif);font-weight:340;font-size:clamp(2.6rem,9vw,6rem);line-height:1;letter-spacing:-.02em;margin-bottom:12px}
+  footer .mail{font-family:var(--serif);font-style:italic;font-size:clamp(1.4rem,4vw,2.4rem);
+    color:var(--accent);text-decoration:none;display:inline-block;position:relative;transition:transform .4s var(--ease)}
+  footer .mail:hover{transform:translateY(-3px)}
+  footer .links{margin-top:50px;display:flex;justify-content:center;flex-wrap:wrap;gap:14px 34px;
+    font-family:var(--mono);font-size:13px;letter-spacing:.03em}
+  footer .links a{color:var(--ink-soft);text-decoration:none;transition:color .3s}
+  footer .links a:hover{color:var(--accent)}
+  footer .colophon{margin-top:64px;font-family:var(--mono);font-size:11px;color:var(--muted);
+    letter-spacing:.05em;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+</style>
 </head>
 <body>
 
-<div class="container">
-    <header>
-        <h1>Supratim Narzary</h1>
-        <p>MS in Business Analytics and AI | The University of Texas at Dallas</p>
-        <p>Richardson, Texas | <a href="mailto:supratimnarzary@gmail.com">supratimnarzary@gmail.com</a> | 
-            <a href="https://www.linkedin.com/in/supratimnarzary/">LinkedIn</a> | <a href="supratimnarzary.github.io">GitHub</a>
-        </p>
-    </header>
+<div class="field"><span class="blob a"></span><span class="blob b"></span></div>
+<div class="grain"></div>
+<div class="progress" id="progress"></div>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="ring"></div>
 
-    <h2>Technical Stack</h2>
-    <div>
-        <span class="skills-tag">SQL</span> <span class="skills-tag">Python</span> <span class="skills-tag">Tableau</span>
-        <span class="skills-tag">PowerBI</span> <span class="skills-tag">Pandas</span> <span class="skills-tag">Scikit-Learn</span> <span class="skills-tag">Alteryx</span>
-        <span class="skills-tag">A/B Testing</span> <span class="skills-tag">SnowPro Associate</span> <span class="skills-tag">Advanced MS Excel</span>
-        <span class="skills-tag">Snowflake</span> <span class="skills-tag">dbt Core</span> <span class="skills-tag">GitHub Actions</span> <span class="skills-tag">Looker Studio</span>
-        <span class="skills-tag">HuggingFace</span> <span class="skills-tag">PyTorch</span> <span class="skills-tag">LoRA / PEFT</span> <span class="skills-tag">vLLM</span>
-        <span class="skills-tag">OpenAI API</span> <span class="skills-tag">WandB</span> <span class="skills-tag">LLMs</span>
+<nav>
+  <div class="brand"><b>Supratim</b> Narzary</div>
+  <div class="navlinks">
+    <a href="#about">About</a>
+    <a href="#work">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#venture">Venture</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="tag reveal">MS · Business Analytics & AI — UT Dallas</div>
+  <h1 class="reveal d1">Supratim<br>Narzary<em>.</em></h1>
+  <p class="sub reveal d2">I turn messy data into decisions — building analytics-engineering pipelines and applied machine-learning systems that leadership can actually act on.</p>
+  <div class="meta reveal d3">
+    <span class="dot"></span><span>Richardson, Texas</span>
+    <a href="mailto:supratimnarzary@gmail.com">supratimnarzary@gmail.com ↗</a>
+    <a href="https://www.linkedin.com/in/supratimnarzary/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a href="https://github.com/supratimnarzary" target="_blank" rel="noopener">GitHub ↗</a>
+  </div>
+  <div class="scrollcue"><span>Scroll</span><span class="ln"></span></div>
+</header>
+
+<!-- ABOUT -->
+<section class="sec about" id="about">
+  <div class="wrap">
+    <div class="eyebrow reveal">01 — About</div>
+    <p class="reveal d1">A data professional bridging <span class="hl">analytics engineering</span> and <span class="hl">applied ML</span> — from production dbt + Snowflake pipelines to fine-tuned LLMs — always anchored to the business question behind the numbers.</p>
+
+    <div style="margin-top:64px" class="reveal d2">
+      <div class="eyebrow">Technical stack</div>
+      <div class="stackgrid">
+        <span class="chip">SQL</span><span class="chip">Python</span><span class="chip">Snowflake</span>
+        <span class="chip">dbt Core</span><span class="chip">Pandas</span><span class="chip">Scikit-Learn</span>
+        <span class="chip">PyTorch</span><span class="chip">HuggingFace</span><span class="chip">LoRA / PEFT</span>
+        <span class="chip">vLLM</span><span class="chip">OpenAI API</span><span class="chip">WandB</span>
+        <span class="chip">Tableau</span><span class="chip">Power BI</span><span class="chip">Looker Studio</span>
+        <span class="chip">Alteryx</span><span class="chip">GitHub Actions</span><span class="chip">A/B Testing</span>
+        <span class="chip">Advanced Excel</span><span class="chip">SnowPro Associate</span>
+      </div>
     </div>
+  </div>
+</section>
 
-    <h2>Professional Experience</h2>
+<!-- EXPERIENCE -->
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">02 — Experience</div><h2>Where I've worked</h2></div>
 
-    <div>
-        <h3>Teaching Assistant at JSOM</h3>
-        <div class="job-meta">
-            <span>University of Texas at Dallas</span>
-            <span>Aug 2025 - Present</span>
-        </div>
+    <div class="xp reveal">
+      <div class="when">Aug 2025 — Present</div>
+      <div class="body">
+        <h3>Teaching Assistant — JSOM</h3>
+        <div class="org">University of Texas at Dallas</div>
         <ul>
-            <li>Assisted professor in creating presentations on lectures for Data Visualization and Machine Learning.</li>
-            <li>Graded coursework for Data Visualization and Applied Machine Learning labs and projects.</li>
-	    <li>Conducted weekly lab sessions for 30-40 graduate students, introducing data visualization techniques using Tableau to enhance analytical understanding.</li>
+          <li>Build lecture materials for Data Visualization and Machine Learning courses.</li>
+          <li>Grade coursework and projects across Data Visualization and Applied ML labs.</li>
+          <li>Run weekly labs for <b>30–40 graduate students</b>, teaching Tableau visualization technique.</li>
         </ul>
+      </div>
     </div>
 
-    <div>
+    <div class="xp reveal">
+      <div class="when">Aug 2019 — Dec 2020</div>
+      <div class="body">
         <h3>Process Champion, Health & Benefits</h3>
-        <div class="job-meta">
-            <span>Mercer LLC</span>
-            <span>Aug 2019 - Dec 2020</span>
-        </div>
+        <div class="org">Mercer LLC</div>
         <ul>
-            <li>Leveraged Advanced Excel (Nested functions, Pivots) to clean and validate healthcare claims and premium datasets exceeding 10,000 rows, ensuring 95% data integrity.</li>
-            <li>Conducted root-cause analysis on reporting inaccuracies and collaborated in creating checklist for report audits which increased reporting accuracy by ~5%.</li>
-	    <li>Collaborated with internal developers to ensure smooth and accurate extraction of healthcare data from pdf files, thus increasing efficiency by approximately 30-40 mins per report.</li>
-	    <li>Handled up to 50% of 187 clients at SME level, resolving queries and assuring quality for ~90 clients every month.</li>
-	    <li>Played a key role in transitioning the HCSO work type, a quarterly project aimed for our San Francisco clients and completed testing for all 23 clients.</li>
-	    <li>Trained new hires on Health and Benefits domain and Client Experience Reporting Tool.</li>
+          <li>Cleaned and validated healthcare claims datasets of <b>10,000+ rows</b> with <b>95% data integrity</b> using advanced Excel.</li>
+          <li>Ran root-cause analysis and built audit checklists that lifted reporting accuracy by <b>~5%</b>.</li>
+          <li>Partnered with developers on PDF data extraction, saving <b>30–40 mins per report</b>.</li>
+          <li>Managed SME-level quality for <b>~90 clients</b> monthly; led the HCSO transition across all 23 SF clients.</li>
         </ul>
+      </div>
     </div>
 
-    <div>
+    <div class="xp reveal">
+      <div class="when">Jan 2016 — Jul 2019</div>
+      <div class="body">
         <h3>Senior Analyst, Health & Benefits</h3>
-        <div class="job-meta">
-            <span>AON India</span>
-            <span>Jan 2016 - Jul 2019</span>
+        <div class="org">AON India</div>
+        <ul>
+          <li>Led a team of <b>5</b> to deliver <b>120+ reports at 97% accuracy</b> under GDPR & PHI/PII protocols.</li>
+          <li>Performed QA on ~70 clients monthly to assure data accuracy.</li>
+          <li>Automated KPI tracking with VBA for a <b>30% efficiency gain</b> across benefit delivery.</li>
+          <li>Trained and mentored new hires on the H&B domain and advanced Excel.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="sec" id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">03 — Selected work</div><h2>Projects</h2></div>
+
+    <div class="projects">
+      <a class="proj reveal" href="https://github.com/supratimnarzary/saas-analytics-portfolio" target="_blank" rel="noopener">
+        <span class="num">/01</span>
+        <div>
+          <h3>SaaS Analytics Engineering — E-Commerce Pipeline</h3>
+          <p>Production-grade analytics pipeline modelling 99,441 Olist orders into a full Kimball star schema, with 32 automated dbt tests and a CI/CD pipeline running build + test on every push.</p>
+          <div class="tools"><span>Snowflake</span><span>dbt Core</span><span>Looker Studio</span><span>GitHub Actions</span><span>SQL</span><span>Python</span></div>
         </div>
-        <ul>
-            <li>Led team of 5 members to achieve a target of 120+ reports with 97% accuracy in the absence of one Full Time Employee, meanwhile ensuring strict adherence to GDPR standards and PHI/PII data privacy protocols.</li>
-	    <li>Validated results and performed quality assurance to assess accuracy of data for 30% (~70) of total clients on average every month.</li>
-            <li>Partnered with developers to automate KPI tracking and reporting needs using VBA, resulting in a 30% increase in operational efficiency across healthcare benefit delivery.</li>
-	    <li>Trained and mentored new hires on Health and Benefits domain and Advance MS Excel.</li>
-        </ul>
-    </div>
+        <span class="arrow">↗</span>
+      </a>
 
-    <h2>Key Projects</h2>
-
-    <div>
-        <h3>SBA Loan Default Classification</h3>
-        <ul>
-            <li>Developed a machine learning model using Python (Scikit-learn, H2O-3) and pandas to classify SBA loan defaults, implementing WOE encoding and feature engineering to enhance model interpretability.</li>
-            <li>Optimized classification thresholds to mitigate class imbalance and engineered an automated scoring pipeline with modular functions for production-ready batch predictions.</li>
-        </ul>
-    </div>
-    <div>
-        <h3>Customer Analytics with SQL</h3>
-        <ul>
-            <li>Built SQL-powered analytical dashboards to track churn, retention, and customer acquisition across key customer segments.</li>
-            <li>Developed data models using CTEs, joins, and subqueries to generate high-quality KPIs and support Go-to-Market decision-making.</li>
-        </ul>
-    </div>
-
-    <div>
-        <h3>SaaS Analytics Engineering — E-Commerce Pipeline <span style="font-weight:normal; font-size:0.85em; color:#586069;">| Snowflake, dbt Core, Looker Studio, GitHub Actions, SQL, Python </span></h3>
-        <ul>
-            <li>Built a production-grade analytics engineering pipeline modelling 99,441 e-commerce orders (500K+ raw rows) from the Olist Brazilian marketplace, implementing a full Kimball star schema across staging, intermediate, and data mart layers using dbt Core on Snowflake.</li>
-            <li>Authored 32 automated dbt data quality tests (unique, not_null, accepted_values, custom SQL) achieving PASS=32, WARN=0, ERROR=0; surfaced and resolved real-world data issues including zero-value voucher orders and NULL payment records.</li>
-            <li>Built a CI/CD pipeline via GitHub Actions to automatically run dbt build and test on every push, with Snowflake credentials managed as encrypted GitHub Secrets - never exposed in code.</li>
-            <li>Delivered a 4-page Looker Studio executive dashboard and CFO-addressed analytics brief uncovering a <strong>97% one-time buyer rate</strong> across 96K customers, a <strong>$775K revenue opportunity</strong> from a 5% retention improvement, and a geographic concentration risk with 3 states driving 62.5% of $16M total revenue.</li>
-        </ul>
-        <p style="margin-top: 6px;"><a href="https://github.com/supratimnarzary/saas-analytics-portfolio" target="_blank">View on GitHub →</a></p>
-    </div>
-
-    <div>
-        <h3>Multi-Label Tweet Emotion Classification <span style="font-weight:normal; font-size:0.85em; color:#586069;">| Python, HuggingFace, Gemma-2, LoRA, OpenAI API, vLLM, WandB | 2025</span></h3>
-        <ul>
-            <li>Designed and compared four modeling approaches for 11-class multi-label emotion detection on tweets: encoder-based classification head, fine-tuned generative LLM (Gemma-2-2B), instruction-tuned LLM with LoRA adapters, and zero-shot GPT-4.1; demonstrating end-to-end understanding of traditional ML, fine-tuned LLMs, and agentic prompt-based inference.</li>
-            <li>Fine-tuned Google's Gemma-2-2B using PEFT/LoRA with parameter-efficient training on Google Colab; deployed fine-tuned adapters to HuggingFace Hub and ran constrained JSON-output inference using vLLM for production-ready structured predictions.</li>
-            <li>Engineered few-shot prompts with constrained JSON decoding for GPT-4.1 API inference; tracked all experiments across model variants using Weights &amp; Biases (WandB) for reproducibility and performance comparison.</li>
-        </ul>
-    </div>
-    <h2>Entrepreneurial Spotlight: NEI AGRO ORIGIN</h2>
-    <div class="spotlight-box" style="display: flex; gap: 40px; align-items: center; flex-wrap: wrap;">
-        <div style="flex: 1; min-width: 280px; display: flex; flex-direction: column; gap: 20px;">
-            <img src="images/businessphoto2.png" alt="NEI AGRO Product" style="width: 100%; border-radius: 8px; border: 1px solid #e1e4e8;">
-            <img src="images/businessphoto3.png" alt="NEI AGRO Product" style="width: 100%; border-radius: 8px; border: 1px solid #e1e4e8;">
+      <a class="proj reveal" href="https://github.com/supratimnarzary" target="_blank" rel="noopener">
+        <span class="num">/02</span>
+        <div>
+          <h3>Multi-Label Tweet Emotion Classification</h3>
+          <p>Compared four approaches to 11-class multi-label emotion detection — an encoder head, a fine-tuned Gemma-2-2B, a LoRA-adapted instruction model, and zero-shot GPT-4.1 — with constrained JSON inference via vLLM.</p>
+          <div class="tools"><span>HuggingFace</span><span>Gemma-2</span><span>LoRA / PEFT</span><span>vLLM</span><span>OpenAI API</span><span>WandB</span></div>
         </div>
+        <span class="arrow">↗</span>
+      </a>
 
-        <div style="flex: 2; min-width: 300px;">
-            <h3>Co-Founder & Marketing Manager</h3>
-            <p><strong>NEI AGRO ORIGIN F&B PVT. LTD | Mar 2021 - Dec 2023</strong></p>
-            <ul>
-                <li>Developed proprietary food products with NIFTEM, Guwahati, piloted market testing & create a Minimum viable product.</li>
-                <li>Launched and managed marketing campaigns across 100+ stores, expos and trade fairs in Guwahati.</li>
-                <li>Introduced innovative product placement strategies which led to ~15% increase in offtakes from the shelves.</li>
-		<li>Designed interactive <strong>Power BI dashboards</strong> for real-time ROI insights.</li>
-                <li>Influenced strategic budget reallocation that <strong>cut costs by ~50%</strong>.</li>
-                <li>Conducted deep financial analysis to guide high-level decision making.</li>
-		<li>Awarded Best Start-up at Udyam’ 22, Guwahati, where more than 500+ MSME participated.</li>
-		<li>Incubated at Assam Start-up, IIM CIP, CIIE.CO – IIM A and NEATEHUB – Assam Agriculture University.</li>
-            </ul>
+      <a class="proj reveal" href="https://github.com/supratimnarzary" target="_blank" rel="noopener">
+        <span class="num">/03</span>
+        <div>
+          <h3>SBA Loan Default Classification</h3>
+          <p>ML model classifying SBA loan defaults with WOE encoding and feature engineering, plus an automated, modular scoring pipeline built for production-ready batch predictions.</p>
+          <div class="tools"><span>Python</span><span>Scikit-Learn</span><span>H2O-3</span><span>Pandas</span></div>
         </div>
+        <span class="arrow">↗</span>
+      </a>
+
+      <a class="proj reveal" href="https://github.com/supratimnarzary" target="_blank" rel="noopener">
+        <span class="num">/04</span>
+        <div>
+          <h3>Customer Analytics with SQL</h3>
+          <p>SQL-powered dashboards tracking churn, retention, and acquisition across segments — using CTEs, joins, and subqueries to surface KPIs for go-to-market decisions.</p>
+          <div class="tools"><span>SQL</span><span>Data Modeling</span><span>KPI Design</span></div>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
     </div>
 
-    <h2>Volunteer Experience</h2>
+    <!-- Flagship metrics -->
+    <div class="flagship reveal">
+      <div class="eyebrow">Impact — SaaS Analytics Pipeline</div>
+      <h3>A 4-page executive dashboard and CFO-addressed brief that turned 500K+ raw rows into a clear retention story.</h3>
+      <div class="stats">
+        <div class="stat"><div class="n" data-target="97" data-suffix="%">0</div><div class="l">One-time buyer rate across 96K customers</div></div>
+        <div class="stat"><div class="n"><span class="u">$</span><span data-target="775" data-suffix="K">0</span></div><div class="l">Revenue opportunity from 5% retention lift</div></div>
+        <div class="stat"><div class="n" data-target="62.5" data-suffix="%">0</div><div class="l">Of $16M revenue concentrated in 3 states</div></div>
+        <div class="stat"><div class="n" data-target="32" data-suffix="/32">0</div><div class="l">dbt data-quality tests passing, zero errors</div></div>
+      </div>
+      <a class="ghlink" href="https://github.com/supratimnarzary/saas-analytics-portfolio" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+  </div>
+</section>
 
-    <div>
+<!-- VENTURE -->
+<section class="sec" id="venture">
+  <div class="wrap venture">
+    <div class="imgs reveal">
+      <img src="https://supratimnarzary.github.io/images/businessphoto2.png" alt="NEI Agro Origin product" loading="lazy">
+      <img src="https://supratimnarzary.github.io/images/businessphoto3.png" alt="NEI Agro Origin product" loading="lazy">
+    </div>
+    <div class="reveal d1">
+      <div class="eyebrow">04 — Entrepreneurial spotlight</div>
+      <h3>NEI Agro Origin</h3>
+      <div class="role">Co-Founder & Marketing Manager · 2021 — 2023</div>
+      <ul>
+        <li>Developed proprietary food products with NIFTEM Guwahati and piloted an <b>MVP</b> through market testing.</li>
+        <li>Ran campaigns across <b>100+ stores</b>, expos, and trade fairs; product-placement strategy lifted shelf offtake <b>~15%</b>.</li>
+        <li>Built interactive <b>Power BI</b> dashboards for real-time ROI, and drove a budget reallocation that <b>cut costs ~50%</b>.</li>
+      </ul>
+      <div class="award">★ Best Start-up, Udyam '22 (500+ MSMEs) · Incubated at Assam Start-up, IIM CIP, CIIE.CO — IIM A & NEATEHUB</div>
+    </div>
+  </div>
+</section>
+
+<!-- VOLUNTEER -->
+<section class="sec" id="volunteer">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">05 — Beyond work</div><h2>Volunteer & leadership</h2></div>
+    <div class="vol">
+      <div class="card reveal">
         <h3>ArtSciLab, UT Dallas</h3>
-        <div class="job-meta">
-            <span>Lab Manager & Operations Lead</span>
-            <span>Oct 2024 – Mar 2026</span>
-        </div>
+        <div class="role">Lab Manager & Operations Lead · 2024 — 2026</div>
         <ul>
-            <li>Led the technical overhaul of the lab’s podcast platform to improve digital reach and user engagement.</li>
-            <li>Streamlined Standard Operating Procedures (SOPs) for all cross-functional teams to ensure consistent operational efficiency and project delivery.</li>
-            <li>Coordinated interdisciplinary initiatives between lab members and external partners to meet project deadlines.</li>
+          <li>Led the technical overhaul of the lab's podcast platform to grow digital reach.</li>
+          <li>Streamlined SOPs across cross-functional teams for consistent delivery.</li>
+          <li>Coordinated interdisciplinary initiatives with external partners against deadlines.</li>
         </ul>
-    </div>
-
-    <div style="margin-top: 25px;">
+      </div>
+      <div class="card reveal d1">
         <h3>JSOM Dean's Council</h3>
-        <div class="job-meta">
-            <span>Member</span>
-        </div>
+        <div class="role">Member</div>
         <ul>
-            <li>Representes graduate students, supported strategic initiatives, and contributed to leadership events within the school.</li>
+          <li>Represented graduate students and supported strategic initiatives.</li>
+          <li>Contributed to leadership events within the school.</li>
         </ul>
+      </div>
     </div>
+  </div>
+</section>
 
+<!-- CONTACT -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="eyebrow reveal">06 — Contact</div>
+    <h2 class="reveal d1">Let's talk data.</h2>
+    <a class="mail reveal d2" href="mailto:supratimnarzary@gmail.com">supratimnarzary@gmail.com</a>
+    <div class="links reveal d3">
+      <a href="https://www.linkedin.com/in/supratimnarzary/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://github.com/supratimnarzary" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="mailto:supratimnarzary@gmail.com">Email ↗</a>
+    </div>
+    <div class="colophon"><span>Richardson, TX</span><span>·</span><span>Designed & built 2026</span><span>·</span><span id="clock"></span></div>
+  </div>
+</footer>
+
+<script>
+  // ---- Custom cursor with eased ring ----
+  const cur = document.getElementById('cursor');
+  const ring = document.getElementById('ring');
+  let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+  (function loop(){rx+=(mx-rx)*.16;ry+=(my-ry)*.16;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(loop);})();
+  document.querySelectorAll('a,.chip,.proj,.vol .card').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cur.classList.add('hover');ring.classList.add('hover');});
+    el.addEventListener('mouseleave',()=>{cur.classList.remove('hover');ring.classList.remove('hover');});
+  });
+
+  // ---- Fluid blobs follow mouse subtly ----
+  const blobA=document.querySelector('.blob.a'),blobB=document.querySelector('.blob.b');
+  addEventListener('mousemove',e=>{
+    const x=(e.clientX/innerWidth-.5),y=(e.clientY/innerHeight-.5);
+    blobA.style.transform=`translate(${x*60}px,${y*60}px)`;
+    blobB.style.transform=`translate(${-x*70}px,${-y*70}px)`;
+  });
+
+  // ---- Scroll progress ----
+  const prog=document.getElementById('progress');
+  addEventListener('scroll',()=>{
+    const h=document.documentElement;
+    prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';
+  });
+
+  // ---- Reveal on scroll ----
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // ---- Animated counters ----
+  const fmt=(v,t)=>Number.isInteger(t)?Math.round(v):v.toFixed(1);
+  const countIO=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting)return;
+      const el=e.target,t=parseFloat(el.dataset.target),suf=el.dataset.suffix||'';
+      let s=null;const dur=1400;
+      const step=ts=>{ if(!s)s=ts; const p=Math.min((ts-s)/dur,1);
+        const eased=1-Math.pow(1-p,3);
+        el.textContent=fmt(t*eased,t)+suf;
+        if(p<1)requestAnimationFrame(step); };
+      requestAnimationFrame(step); countIO.unobserve(el);
+    });
+  },{threshold:.6});
+  document.querySelectorAll('[data-target]').forEach(el=>countIO.observe(el));
+
+  // ---- Active nav highlight ----
+  const navlinks=[...document.querySelectorAll('.navlinks a')];
+  const secs=navlinks.map(a=>document.querySelector(a.getAttribute('href')));
+  addEventListener('scroll',()=>{
+    let idx=0;secs.forEach((s,i)=>{ if(s&&s.getBoundingClientRect().top<innerHeight*.4)idx=i;});
+    navlinks.forEach((a,i)=>a.classList.toggle('active',i===idx));
+  });
+
+  // ---- Local clock ----
+  const clock=document.getElementById('clock');
+  const tick=()=>{clock.textContent=new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',timeZone:'America/Chicago'})+' CT';};
+  tick();setInterval(tick,1000*30);
+</script>
 </body>
 </html>
